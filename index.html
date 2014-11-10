@@ -1,156 +1,632 @@
-﻿<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="mobiplas">
-    <meta name="author" content="v.bushuev">
-    <title>Мобиплас - Процессинговая система</title>
-	<link href="favicon.png" rel="icon" type="image/png">
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <link href="css/grayscale.css" rel="stylesheet" type="text/css">
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<!-- broken google fonts 
-    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-	-->
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<title>Мобиплас - Процессинговая система.</title>
+	<meta name="robot" content="index,follow">
+	<meta name="copyright" content="Copyright © 2014 StampReady. All Rights Reserved.">
+	<meta name="author" content="">
+	<meta name="revisit-after" content="30">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
+	<link rel="stylesheet" type="text/css" href="css/stampready.css" media="screen" />
+	<script src="js/Chart.js"></script>
+	<!-- Jquery Framework -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<!-- Custom -->
+	<script type="text/javascript" src="js/customc538.js?random=54608ef780762"></script>
+	<!-- Custom -->
+	<script type="text/javascript" src="js/waypoints.min6019.js?random=54608ef7807aa"></script>
+	<!-- StampReady API-->
+	<script type="text/javascript" src="api0ecb.js?random=54608ef7807ee"></script>
+	<script>
+		$(document).ready(function(){
+			$(document).on('change', '[type="checkbox"]', function(){
+				if ($(this).is(':checked')) {
+					$(this).next('a').addClass('checked');
+				}
+				else {
+					$(this).next('a').removeClass('checked');
+				}
+			});	
+			$(document).on('click', '#submit_terms', function(){
+				validateRegister();
+			});
+			$('#register').on('keyup', 'input[type="text"], input[type="password"]', function(){
+				validateRegister();
+			});
+
+	  	// h = $(document).height()
+	  	// w = $(document).width();
+
+	  	// alert(w+' '+h);
+
+
+	  	action = '';
+
+	  	if(action == 'login'){
+
+	  		openPopup();
+
+	  	} else if (action == 'register') {
+
+	  		openPopupRegister();
+	  		$('#login').hide();
+			$('#register').show();
+
+	  	} else if (action == 'duplicate') {
+
+	  		openPopupRegister();
+	  		$('#login').hide();
+			$('#register').show();
+			$('#register #email').focus();
+			$('#register #email').addClass('error_email');
+			
+			setTimeout(function(){
+
+				$('#register #username').val('');
+				$('#register #password').val('');
+
+				username = '';
+
+				$('#register #username').val(username);
+				
+			}, 500);
+
+	  	} else if (action == 'forgot_password') {
+
+	  		openPopup();
+	  		$('#login').hide();
+			$('#forgot_password').show();
+
+	  	} else if (action == 'reset_password') {
+
+	  		openPopup();
+	  		$('#login').hide();
+			$('#reset_password').show();
+
+	  	} else if (action == 'success_reset') {
+
+	  		openPopup();
+	  		$('#login').hide();
+			$('#success_reset').show();
+
+			setTimeout(function(){
+
+				openPopup();
+
+			}, 2000)
+
+	  	} else if (action == 'error_login') {
+
+	  		openPopup();
+			$('#login .login_content').prepend('<p class="error_login">Your email or password is incorrect.</p>');
+			$('#login .login_content').removeClass('login_content').addClass('login_content_text');
+
+	  	} else if (action == 'error_reset') {
+
+	  		openPopup();
+	  		$('#login, #forgot_password h1:first-child').hide();
+			$('#forgot_password, .error_reset').show();
+			$('#forgot_password p').html('Are you sure you have registered with that email address?')
+
+	  	} else if (action == 'password_sent') {
+
+	  		openPopup();
+	  		$('#login').hide();
+			$('#password_sent').show();
+
+	  	} else {
+
+	  	}
+	  	
+	  	$('#introduction').waypoint(function(direction) {
+			$('video')[0].pause();
+		});
+		
+		w_flag = 0;
+		
+		$('.start_donut').waypoint(function(direction) {
+		
+		if (w_flag == 1){
+			
+		}
+		
+		else {
+		
+			$('#analytics .hidden').fadeIn(1000);
+			
+			var doughnutData = [
+				{
+					value: 300,
+					color:"#69c0af",
+					highlight: "#5ca999",
+					label: "Delivered"
+				},
+				{
+					value: 100,
+					color: "#cd6d67",
+					highlight: "#b65a54",
+					label: "Hard Bounces"
+				},
+				{
+					value: 50,
+					color: "#847f9f",
+					highlight: "#767192",
+					label: "Soft Bounces"
+				},
+				{
+					value: 10,
+					color: "#57a2d6",
+					highlight: "#468ec1",
+					label: "Rejects"
+				}
+
+			];
+
+			var doughnutData2 = [
+				{
+					value: 50,
+					color:"#5ecce5",
+					highlight: "#4fbcd5",
+					label: "Opens"
+				},
+				{
+					value: 200,
+					color: "#50617d",
+					highlight: "#394964",
+					label: "Clicks"
+				}
+			];
+
+			var ctx = document.getElementById("chart-area").getContext("2d"); 
+			var ctx2 = document.getElementById("chart-area2").getContext("2d");
+			window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : false}); 
+			window.myDoughnut = new Chart(ctx2).Doughnut(doughnutData2, {responsive : false}); 
+			
+			w_flag = 1;
+			
+		}
+		
+		});
+		
+		a_flag = 0;
+		
+		$('#developers_right').waypoint(function(direction) {
+		
+			if(a_flag == 1){
+				
+				
+			}
+			
+			else {
+				
+				startAnimateList();
+				
+			}
+		
+		});
+
+	  });
+	  
+	  function validateRegister(){
+		  
+		  pass = $('#register #password');
+			username = $('#register #username');
+			email = $('#register #email');
+			
+			username_val = $(username).val().length;
+			email_val = $(email).val();
+			pass_val = $(pass).val().length;
+			
+			if(username_val < 2){
+				
+				//disable
+				$('#register').find('input[type="submit"]').addClass('de');
+				$('#register').find('input[type="submit"]').attr('disabled','false');
+				
+				return false;
+				
+			}
+			
+			else if(pass_val < 6){
+				
+				//disable
+				$('#register').find('input[type="submit"]').addClass('de');
+				$('#register').find('input[type="submit"]').attr('disabled','false');
+				
+				return false;
+				
+			}
+		
+		
+			if($('#submit_terms').is(':checked')){
+			
+				if(isEmail($('#register #email').val())){
+				
+					//enable
+					$('#register').find('input[type="submit"]').removeClass('de');
+					$('#register').find('input[type="submit"]').removeAttr('disabled');
+					
+					return false;
+				
+				}
+				
+				else {
+					
+					//disable
+					$('#register').find('input[type="submit"]').addClass('de');
+					$('#register').find('input[type="submit"]').attr('disabled','false');
+					
+					return false;
+					
+				}
+			
+			}
+			
+			else {
+			
+				//disable
+				$('#register').find('input[type="submit"]').addClass('de');
+				$('#register').find('input[type="submit"]').attr('disabled','false');
+			
+				return false;
+				
+			}
+		  
+	  }
+	  
+	  $(function() {
+  $('a[href*=#]:not([href=#])').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+      if (target.length) {
+        $('html,body').animate({
+          scrollTop: target.offset().top
+        }, 500);
+        return false;
+      }
+    }
+  });
+});
+	</script>
 </head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-    <!-- Navigation -->
-    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                    <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">
-                    <!--<i class="fa fa-play-circle"></i>  <span class="light">Присоединиться</span> к Мобиплас-->
-					<img src="css/img/logo.icon.text.white.png" height="18px"/>
-                </a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">О нас</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#download">Что нужно знать</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Контакты</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-    <!-- Intro Header -->
-    <header class="intro">
-        <div class="intro-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-                        <h1 class="brand-heading"><img src="css/img/logo.icon.png"/>Мобиплас</h1>
-                        <p class="intro-text">Современный банковский процессинг<br>Новый взгляд на взаимотношения Банков и ИТ.</p>
-                        <a href="#about" class="btn btn-circle page-scroll">
-                            <i class="fa fa-angle-double-down animated"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- About Section -->
-    <section id="about" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>О Мобиплас</h2>
-				<p>Компания ООО "МобиПлаС" (ООО "Мобильные платёжные сервисы") основана в 2008 году. Создание компании обусловлено высокими темпами роста числа пользователей мобильной связи и Интернета в России и существенным ростом эмиссии банковских карт. Цель, которую ставит перед собой компания ООО "МобиПлаС" – внедрение в повседневную практику высокотехнологичных способов управления денежными средствами, основанных на безопасных решениях дистанционного управления банковским счетами.</p>
-				<p>Основными видами деятельности компании "МобиПлаС" являются: 
-					<ul>
-						<li>разработка программных продуктов для обслуживания банков, торгово-сервисных предприятий и иных юридических и физических лиц в направлении развития мобильной и интернет-коммерции</li>
-						<li>оказание процессинговых услуг, связанных с использованием платежных карт и расчетов по ним во внутренних и международных платежных системах</li>
-						<li>предоставление услуг, связанных с организацией дистанционных финансовых сервисов в целях проведения безналичных расчетов с использованием Интернета и мобильной телефонной связи</li>
-						<li>реализация инновационных бизнес-проектов в сфере дистанционных финансовых сервисов.</li>
-					</ul>
-				</p>
-				<p>Компания работает в содружестве с партнерами, в числе которых крупные банки, ведущие ИТ-компании и активные участники рынка электронной коммерции.</p>
-            </div>
-        </div>
-    </section>
-    <!-- Download Section -->
-    <section id="download" class="content-section text-center">
-        <div class="download-section">
-            <div class="container">
-                <div class="col-lg-8 col-lg-offset-2">
-                    <h2>Что нужно знать!</h2>
-                    <p>Получите документацию о том, что нужно, что бы стать соучастником.</p>
-                    <a href="http://mobiplas.ru" class="btn btn-default btn-lg">Получить необходимую документацию</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section -->
-    <section id="contact" class="container content-section text-center">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2">
-                <h2>Контакты Мобиплас</h2>
-                <p>Напишите нам. Мы открыты для любых предложений!</p>
-                <p><a href="mailto:info@mobiplas.ru">info@mobiplas.ru</a>
-                </p>
-                <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <a href="https://twitter.com/Mobiplas" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
-                    </li>
-                    <li>
-                        <a href="https://facebook.com/Mobiplas" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
-                    </li>
-                    <li>
-                        <a href="https://plus.google.com/+Mobiplas" class="btn btn-default btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!-- Map Section -->
-    <div id="map"></div>
-    <!-- Footer -->
-    <footer>
-        <div class="container text-center">
-            <p>Copyright &copy; Your Website 2014</p>
-        </div>
-    </footer>
+<body>
+	<div id="header">
+		<div class="container logonav">
 
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+			<div id="logo"></div>
+		
+			<ul id="navigation">
+				<li class="burger">ДЕМО</li>
+				<li id="login_btn">О НАС</li>
+				<li id="register_btn" class="open_register">Контакты</li>
+			</ul>
 
-    <!-- Plugin JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
+		</div>
+		<div id="headline">
+			<span>Мобиплас</span>. Новый &amp; Современный взгляд на банковский бизнес.
+		</div>
+		<div id="play"></div>
+		<div class="still"></div>
+		<div class="layer"></div>
+		<div id="movie">
+			<video class="fullscreen fill" width="1920" height="1080" autoplay loop muted="muted">
+				<source src="video/loop.mp4" type="video/mp4">
+				<source src="video/loop.ogv" type="video/ogg">
+				<source src="video/loop.webm" type="video/webm"> 
+			</video>
+		</div>
+	</div><!-- end header -->
+	<div id="header_blank"></div>
+	<div id="introduction">
+		<ul class="clear-fix">		
+			<li class="state_1">
+				<h3>Дистанционное обслуживание</h3>
+				<p>Готовое решение ДБО, включая ИнтернетБанк, Мобильный Банк и SMS Банк.<br/><br/><a href="#" class="open_register">Узнать больше</a></p>
+			</li>
+			<li class="state_2">
+				<h3>Конвейер банковских продуктов</h3>
+				<p>Предустановленный набор банковских продуктов как кредитных так и дебетовых.<br/><br/><a href="#dashboard">Полный список</a></p>			
+			</li>
+			<li class="state_3">
+				<h3>Сопровождение системы.</h3>
+				<p>Отчетность, аналитика 24/7 поддержка клиентов... Далеко не полный список "Коробочного решения".<br/><br/><a href="index456e.html" style="color: #ea6b3e">Посмотреть</a></p>			
+			</li>
+		</ul>
+	</div>
+	<div id="dashboard">
+		<div id="dashboard_left"></div>
+		<div id="dashboard_right">
+			<div class="textwrap">
+				<h2>Наш сервис ДБО предоставляет <span>максимум</span> возможностей для киентов как для юридических, так и для физических лиц.</h2>
+				<a href="#" class="open_register" style="text-transform: uppercase;">Посмотреть демо</a>
+			</div>
+		</div>
+	</div>
+	<div id="pes">
+		<div id="pes_left">
+			<div class="textwrap pick">
+				<!-- <img src="img/shopping_bag_icon.png"> -->
+				<h2>Кредиты</h2>
+				<p>Предустановленые кредитные продукты "под ключ". Ковейер, Скоринг, Представители.</p>
+			</div>
 
-    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCRngKslUGJTlibkQ3FkfTxj3Xss1UlZDA&sensor=false"></script>
+		</div>
+		<div id="pes_middle">
 
-    <!-- Custom Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+			<div class="textwrap edit">
+				<!-- <img src="img/settings_icon.png"> -->
+				<h2>Депозиты</h2>
+				<p>Широкий спекрт депозитных продуктов от электронных неидентифицированных кошельков до вкладов сплавающей ставкой.</p>
+				<div class="start_donut"></div>
+			</div>
+
+		</div>
+		<div id="pes_right">
+			<div class="textwrap send">
+				<!-- <img src="img/send_icon.png"> -->
+				<h2>МПС</h2>
+				<p>Полная поддержка карточного процессинга <span>VISA</span> &amp; <span>MasterCard</span>.</p>
+			</div>
+
+		</div>
+
+	</div>
+	<div id="analytics">
+
+		<div class="analyticsWrapper">
+			<h2>Аналитика<br><span>Маркетинговая аналитика.<br/>Отчетность ЦБ.</span></h2>
+
+			<div id="canvas-holder" class="hidden">
+				<div class="area-txt">460<br><span>обороты</span></div>
+				<canvas id="chart-area" width="400" height="400"/>
+			</div>
+
+			<div id="canvas-holder2" class="hidden">
+				<div class="area2-txt">Заявки<br/>Одобрено</div>
+				<canvas id="chart-area2" width="300" height="300"/>
+			</div>
+			
+		</div>
+
+	</div>
+
+	<div id="pricing">
+
+		<div id="credits">
+
+			<div class="pricing_left orange-light">
+
+				<div class="textwrap">
+					<h2>Credits</h2>
+					<p>Stay flexible with a pay as you grow plan.</p>
+					<p class="p3">Calculate your credits</p>
+					<input type="text" id="define_amount" placeholder="Ex 1,000" maxlength="7" class="semi_bold numericOnly">
+				</div>
+
+				<div class="arrow"></div>
+
+			</div>
+
+			<div class="credits_right">
+
+				<div class="result">
+					<h2 id="define_amount_price">$60.00</h2>
+				</div>
+
+			</div>
+
+		</div>
+
+		<div id="plans">
+
+			<div class="pricing_left orange">
+
+				<div class="textwrap">
+					<h2>Plans</h2>
+					<p>When you’re sending out a newsletter regularly a plan may suit you better.</p>
+					<p class="p2">Define amount subscribers</p>
+					<input type="text" id="define_amount_plan" placeholder="Ex 3,000" maxlength="7" class="semi_bold numericOnly">
+				</div>
+
+				<div class="arrow2"></div>
+
+			</div>
+
+			<div class="plans_right">
+
+				<div class="result2">
+
+					<h3><span class="hide_it">Plan</span> <span class="define_amount_result">3,000</span></h3>
+					<h2><span class="plan_price_amount hide_it">$60.00</span> <span class="hide_it">/ monthly</span><div class="contact_us semi_bold"><a href="mailto:info@stampready.net?subject=Custom plan">CONTACT US</a></div></h2>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="developers">
+
+		<div class="developersWrapper">
+
+			<div id="developers_left">
+
+				<div>
+					<img src="img/map.png">
+				</div>
+
+			</div>
+
+			<div id="developers_right">
+
+				<div>
+					<h2>Special Thanks to the Developers Worldwide</h2>
+					<h3 class="thinreg">They have created beautiful templates for you.</h3>
+					<a href="guide/index.html" target="_blank">Developer? Get familiar with our language</a>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="embed_list">
+
+		<div id="field">
+			<span class="input_style">Embed our form on your website and see your list grow</span>
+			<a href="faq/index849e.html?search=embed" target="_blank">More info</a>
+		</div>
+
+		<div id="subscribers"></div>
+
+	</div>
+
+	<div id="footer">
+
+		<div id="register_footer">
+
+			<div class="slogan">
+				<h2>Enjoy the finer things in life.</h2>
+			</div>
+
+			<div id="register-logo">
+				<div class="logo-btm"><a href="#"><img src="img/footer-logo.png"></a></div>
+				<!-- <div class="register-btm"><a href="#" class="">Register a Free account</a></div> -->
+			</div>	
+
+		</div>
+
+		<div id="copyright">
+			
+			<div>
+				&copy; StampReady 2014 &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp; <a href="presskit/stampready-presskit1.0.html" target="_blank">Presskit</a> &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp; <a href="terms-and-conditions/index.html" target="_blank">Terms and Conditions</a> &nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;<a href="mailto:info@stampready.net">info@stampready.net</a> &nbsp;&nbsp;&nbsp;&nbsp;<a class="twitter" href="http://www.twitter.com/stampready" target="_blank">twitter</a>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<!-- LOGIN AND REGISTER	 -->
+
+	<div id="loginWrapper">
+
+		<div id="login" class="login_popup">
+
+			<div class="login_logo"><img src="img/login-logo.png"></div>
+
+			<div class="login_content">
+
+				<form autocomplete="on" autocapitalize="on" action="http://www.stampready.net/dashboard/scripts/verify.php" method="post">
+
+					<input autocomplete="off" autocapitalize="off" type="text" id="email" name="email" placeholder="email">
+					<input autocomplete="off" autocapitalize="off" type="password" id="password" name="password" placeholder="password">
+					<a id="forgot_btn" href="#">forgot password?</a>
+					<input type="submit" name="login" value="login to dashboard">
+
+				</form>
+
+			</div>
+			
+		</div>
+
+		<div id="register" class="login_popup hidden">
+
+			<div class="login_logo"><img src="img/login-logo.png"></div>
+
+			<div class="register_content">
+
+				<form autocomplete="on" autocapitalize="on" action="http://www.stampready.net/dashboard/scripts/verify.php" method="post">
+
+					<input autocomplete="off" autocapitalize="off" type="text" id="username" name="username" placeholder="username">
+					<input autocomplete="off" autocapitalize="off" type="text" id="email" name="email" placeholder="email">
+					<input autocomplete="off" autocapitalize="off" type="password" id="password" class="reg_pass" name="password" placeholder="password">
+					<label><input type="checkbox" id="submit_terms" name="terms" value="1"><a></a></label><span>I accept the StampReady <a href="terms-and-conditions/index.html" target="_blank" style="color: #69c0af;">terms and conditions</a></span>
+					<input type="submit" name="register" value="register account" disabled class="de">
+
+				</form>
+
+			</div>
+			
+		</div>
+
+		<div id="forgot_password" class="login_popup hidden">
+
+			<div class="login_logo"><img src="img/login-logo.png"></div>
+
+			<div class="login_content_text">
+
+				<h1>Forgot your password?</h1>
+				<h1 class="error_reset hidden">Your email was not found.</h1>
+				<p>You will receive an instruction email on how to set up a new password.</p>
+
+				<form autocomplete="off" autocapitalize="off" action="http://www.stampready.net/dashboard/scripts/verify.php" method="post">
+					<input type="text" id="reset_email" name="email" placeholder="email">
+					<a id="back_btn" href="#">back to login</a>
+					<input type="submit" name="forget_password" value="reset password">
+				</form>
+
+			</div>
+
+		</div>
+
+		<div id="reset_password" class="login_popup hidden">
+
+			<div class="login_logo"><img src="img/login-logo.png"></div>
+
+			<div class="login_content">
+
+				<p>A minimum of 6 characters is required.</p>
+
+				<form autocomplete="off" autocapitalize="off" action="http://www.stampready.net/dashboard/scripts/verify.php" method="post">
+
+					<input type="password" id="pass1" name="pass1" placeholder="new password">
+					<input type="hidden" name="token" value="">
+					<input type="hidden" name="email" value="">
+					<input type="submit" name="verify_password" value="create my new password">
+					
+				</form>
+
+			</div>
+
+		</div>
+
+		<div id="success_reset" class="login_popup hidden">
+
+			<div class="login_logo"><img src="img/login-logo.png"></div>
+
+			<div class="login_content_nobtn">
+
+				<p>Your password has been succesfully updated.</p>
+
+			</div>
+			
+		</div>
+
+		
+		<div id="password_sent" class="login_popup hidden">
+
+			<div class="login_logo"><img src="img/login-logo.png"></div>
+
+			<div class="login_content_text">
+
+				<h1>Email sent.</h1>
+				<p>You will receive an instruction email on how to set up a new password.</p>
+				<input type="submit" value="got it" onclick="closePopup();">
+
+			</div>
+			
+		</div>
+		
+	</div>
 
 </body>
 
+<!-- Mirrored from www.stampready.net/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Nov 2014 10:17:58 GMT -->
 </html>

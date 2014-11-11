@@ -1,0 +1,13 @@
+﻿@charset "UTF-8";
+.panton-pink{color:rgba(0,53,154,1);}
+.panton-blue{color:rgba(47,160,254,1);}
+.panton-grey{color:rgba(76,102,102,1);}
+.panton-pink-bg{background-color:rgba(0,53,154,1);}
+.panton-blue-bg{background-color:rgba(47,160,254,1);}
+.panton-grey-bg{background-color:rgba(76,102,102,1);}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; }
+body{font-family:"Trebuchet MS","Trebuchet MS Bold","Plumb Condensed","Plumb Condensed Bold";font-size:16px!important;}
+html {width:100%;height:100%;}
+h1 {font-family:"Trebuchet MS","Trebuchet MS Bold","Plumb Condensed","Plumb Condensed Bold";font-size:48px;color: #4a4a4a; }
+h2 {font-family:"Trebuchet MS","Trebuchet MS Bold","Plumb Condensed","Plumb Condensed Bold";font-size:36px;line-height:48px;color:#4a4a4a; }
+h3 {font-family:"Trebuchet MS","Trebuchet MS Bold","Plumb Condensed","Plumb Condensed Bold";font-size:24px;line-height:48px;color:#4a4a4a; }

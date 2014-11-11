@@ -10,303 +10,30 @@
 	<meta name="revisit-after" content="30">
 	<link rel="shortcut icon" type="image/x-icon" href="favicon.png" />
 	<link rel="stylesheet" type="text/css" href="css/stampready.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="css/mobiplas.css" media="screen" />
 	<script src="js/Chart.js"></script>
 	<!-- Jquery Framework -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<!-- Custom -->
-	<script type="text/javascript" src="js/customc538.js?random=54608ef780762"></script>
+	<script type="text/javascript" src="js/custom.js?random=54608ef780762"></script>
 	<!-- Custom -->
 	<script type="text/javascript" src="js/waypoints.min6019.js?random=54608ef7807aa"></script>
 	<!-- StampReady API-->
-	<script type="text/javascript" src="api0ecb.js?random=54608ef7807ee"></script>
-	<script>
-		$(document).ready(function(){
-			$(document).on('change', '[type="checkbox"]', function(){
-				if ($(this).is(':checked')) {
-					$(this).next('a').addClass('checked');
-				}
-				else {
-					$(this).next('a').removeClass('checked');
-				}
-			});	
-			$(document).on('click', '#submit_terms', function(){
-				validateRegister();
-			});
-			$('#register').on('keyup', 'input[type="text"], input[type="password"]', function(){
-				validateRegister();
-			});
-
-	  	// h = $(document).height()
-	  	// w = $(document).width();
-
-	  	// alert(w+' '+h);
-
-
-	  	action = '';
-
-	  	if(action == 'login'){
-
-	  		openPopup();
-
-	  	} else if (action == 'register') {
-
-	  		openPopupRegister();
-	  		$('#login').hide();
-			$('#register').show();
-
-	  	} else if (action == 'duplicate') {
-
-	  		openPopupRegister();
-	  		$('#login').hide();
-			$('#register').show();
-			$('#register #email').focus();
-			$('#register #email').addClass('error_email');
-			
-			setTimeout(function(){
-
-				$('#register #username').val('');
-				$('#register #password').val('');
-
-				username = '';
-
-				$('#register #username').val(username);
-				
-			}, 500);
-
-	  	} else if (action == 'forgot_password') {
-
-	  		openPopup();
-	  		$('#login').hide();
-			$('#forgot_password').show();
-
-	  	} else if (action == 'reset_password') {
-
-	  		openPopup();
-	  		$('#login').hide();
-			$('#reset_password').show();
-
-	  	} else if (action == 'success_reset') {
-
-	  		openPopup();
-	  		$('#login').hide();
-			$('#success_reset').show();
-
-			setTimeout(function(){
-
-				openPopup();
-
-			}, 2000)
-
-	  	} else if (action == 'error_login') {
-
-	  		openPopup();
-			$('#login .login_content').prepend('<p class="error_login">Your email or password is incorrect.</p>');
-			$('#login .login_content').removeClass('login_content').addClass('login_content_text');
-
-	  	} else if (action == 'error_reset') {
-
-	  		openPopup();
-	  		$('#login, #forgot_password h1:first-child').hide();
-			$('#forgot_password, .error_reset').show();
-			$('#forgot_password p').html('Are you sure you have registered with that email address?')
-
-	  	} else if (action == 'password_sent') {
-
-	  		openPopup();
-	  		$('#login').hide();
-			$('#password_sent').show();
-
-	  	} else {
-
-	  	}
-	  	
-	  	$('#introduction').waypoint(function(direction) {
-			$('video')[0].pause();
-		});
-		
-		w_flag = 0;
-		
-		$('.start_donut').waypoint(function(direction) {
-		
-		if (w_flag == 1){
-			
-		}
-		
-		else {
-		
-			$('#analytics .hidden').fadeIn(1000);
-			
-			var doughnutData = [
-				{
-					value: 300,
-					color:"#69c0af",
-					highlight: "#5ca999",
-					label: "Delivered"
-				},
-				{
-					value: 100,
-					color: "#cd6d67",
-					highlight: "#b65a54",
-					label: "Hard Bounces"
-				},
-				{
-					value: 50,
-					color: "#847f9f",
-					highlight: "#767192",
-					label: "Soft Bounces"
-				},
-				{
-					value: 10,
-					color: "#57a2d6",
-					highlight: "#468ec1",
-					label: "Rejects"
-				}
-
-			];
-
-			var doughnutData2 = [
-				{
-					value: 50,
-					color:"#5ecce5",
-					highlight: "#4fbcd5",
-					label: "Opens"
-				},
-				{
-					value: 200,
-					color: "#50617d",
-					highlight: "#394964",
-					label: "Clicks"
-				}
-			];
-
-			var ctx = document.getElementById("chart-area").getContext("2d"); 
-			var ctx2 = document.getElementById("chart-area2").getContext("2d");
-			window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : false}); 
-			window.myDoughnut = new Chart(ctx2).Doughnut(doughnutData2, {responsive : false}); 
-			
-			w_flag = 1;
-			
-		}
-		
-		});
-		
-		a_flag = 0;
-		
-		$('#developers_right').waypoint(function(direction) {
-		
-			if(a_flag == 1){
-				
-				
-			}
-			
-			else {
-				
-				startAnimateList();
-				
-			}
-		
-		});
-
-	  });
-	  
-	  function validateRegister(){
-		  
-		  pass = $('#register #password');
-			username = $('#register #username');
-			email = $('#register #email');
-			
-			username_val = $(username).val().length;
-			email_val = $(email).val();
-			pass_val = $(pass).val().length;
-			
-			if(username_val < 2){
-				
-				//disable
-				$('#register').find('input[type="submit"]').addClass('de');
-				$('#register').find('input[type="submit"]').attr('disabled','false');
-				
-				return false;
-				
-			}
-			
-			else if(pass_val < 6){
-				
-				//disable
-				$('#register').find('input[type="submit"]').addClass('de');
-				$('#register').find('input[type="submit"]').attr('disabled','false');
-				
-				return false;
-				
-			}
-		
-		
-			if($('#submit_terms').is(':checked')){
-			
-				if(isEmail($('#register #email').val())){
-				
-					//enable
-					$('#register').find('input[type="submit"]').removeClass('de');
-					$('#register').find('input[type="submit"]').removeAttr('disabled');
-					
-					return false;
-				
-				}
-				
-				else {
-					
-					//disable
-					$('#register').find('input[type="submit"]').addClass('de');
-					$('#register').find('input[type="submit"]').attr('disabled','false');
-					
-					return false;
-					
-				}
-			
-			}
-			
-			else {
-			
-				//disable
-				$('#register').find('input[type="submit"]').addClass('de');
-				$('#register').find('input[type="submit"]').attr('disabled','false');
-			
-				return false;
-				
-			}
-		  
-	  }
-	  
-	  $(function() {
-  $('a[href*=#]:not([href=#])').click(function() {
-    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-      var target = $(this.hash);
-      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-      if (target.length) {
-        $('html,body').animate({
-          scrollTop: target.offset().top
-        }, 500);
-        return false;
-      }
-    }
-  });
-});
-	</script>
+	<script type="text/javascript" src="js/api0ecb.js?random=54608ef7807ee"></script>
+	<script type="text/javascript" src="js/stampready.js"></script>
 </head>
 <body>
 	<div id="header">
 		<div class="container logonav">
-
 			<div id="logo"></div>
-		
 			<ul id="navigation">
-				<li class="burger">ДЕМО</li>
-				<li id="login_btn">О НАС</li>
+				<li class="burger">Демо</li>
+				<li id="login_btn">О нас</li>
 				<li id="register_btn" class="open_register">Контакты</li>
 			</ul>
-
 		</div>
 		<div id="headline">
-			<span>Мобиплас</span>. Новый &amp; Современный взгляд на банковский бизнес.
+			<strong>Мобиплас</strong>. Новый &amp; Современный взгляд на банковский бизнес.
 		</div>
 		<div id="play"></div>
 		<div class="still"></div>
@@ -375,99 +102,65 @@
 
 	</div>
 	<div id="analytics">
-
 		<div class="analyticsWrapper">
 			<h2>Аналитика<br><span>Маркетинговая аналитика.<br/>Отчетность ЦБ.</span></h2>
-
 			<div id="canvas-holder" class="hidden">
 				<div class="area-txt">460<br><span>обороты</span></div>
 				<canvas id="chart-area" width="400" height="400"/>
 			</div>
-
 			<div id="canvas-holder2" class="hidden">
 				<div class="area2-txt">Заявки<br/>Одобрено</div>
 				<canvas id="chart-area2" width="300" height="300"/>
-			</div>
-			
+			</div>			
 		</div>
-
 	</div>
-
 	<div id="pricing">
-
 		<div id="credits">
-
 			<div class="pricing_left orange-light">
-
 				<div class="textwrap">
-					<h2>Credits</h2>
-					<p>Stay flexible with a pay as you grow plan.</p>
-					<p class="p3">Calculate your credits</p>
-					<input type="text" id="define_amount" placeholder="Ex 1,000" maxlength="7" class="semi_bold numericOnly">
+					<h2>Финансы</h2>
+					<p>Мы предлагаем предустановленные, коробочные решения, абонентская плата зависит от числа клиентов.</p>
+					<p class="p3">Введите кол-во клиентов.</p>
+					<input type="text" id="define_amount" placeholder="1,000" maxlength="7" class="semi_bold numericOnly">
 				</div>
-
 				<div class="arrow"></div>
-
 			</div>
-
 			<div class="credits_right">
-
 				<div class="result">
-					<h2 id="define_amount_price">$60.00</h2>
+					<h2 id="define_amount_price">&#8381; 60.00</h2>
 				</div>
-
 			</div>
-
 		</div>
-
 		<div id="plans">
-
 			<div class="pricing_left orange">
-
 				<div class="textwrap">
-					<h2>Plans</h2>
-					<p>When you’re sending out a newsletter regularly a plan may suit you better.</p>
-					<p class="p2">Define amount subscribers</p>
-					<input type="text" id="define_amount_plan" placeholder="Ex 3,000" maxlength="7" class="semi_bold numericOnly">
+					<h2>Планирование</h2>
+					<p>Использование платежного инструмента.</p>
+					<p class="p2">Кол-во операций</p>
+					<input type="text" id="define_amount_plan" placeholder="3,000" maxlength="7" class="semi_bold numericOnly">
 				</div>
-
 				<div class="arrow2"></div>
-
 			</div>
-
 			<div class="plans_right">
-
 				<div class="result2">
-
-					<h3><span class="hide_it">Plan</span> <span class="define_amount_result">3,000</span></h3>
-					<h2><span class="plan_price_amount hide_it">$60.00</span> <span class="hide_it">/ monthly</span><div class="contact_us semi_bold"><a href="mailto:info@stampready.net?subject=Custom plan">CONTACT US</a></div></h2>
-
+					<h3><span class="hide_it">План</span> <span class="define_amount_result">3,000</span></h3>
+					<h2><span class="plan_price_amount hide_it">&#8381;60.00</span> <span class="hide_it">/ месяц</span><div class="contact_us semi_bold"><a href="mailto:info@mobiplas.ru">Отправить запрос</a></div></h2>
 				</div>
-
 			</div>
-
 		</div>
-
 	</div>
-
 	<div id="developers">
-
 		<div class="developersWrapper">
-
 			<div id="developers_left">
-
 				<div>
 					<img src="img/map.png">
 				</div>
-
 			</div>
-
 			<div id="developers_right">
-
 				<div>
-					<h2>Special Thanks to the Developers Worldwide</h2>
-					<h3 class="thinreg">They have created beautiful templates for you.</h3>
-					<a href="guide/index.html" target="_blank">Developer? Get familiar with our language</a>
+					<h2>Технологиии ДБО</h2>
+					<h3>Позволяют расширять границы территориального влияния</h3>
+					<a href="#">Имеется банковская лицензия? Подключайтесь</a>
 				</div>
 
 			</div>
@@ -475,12 +168,12 @@
 		</div>
 
 	</div>
-
+<!--
 	<div id="embed_list">
 
 		<div id="field">
-			<span class="input_style">Embed our form on your website and see your list grow</span>
-			<a href="faq/index849e.html?search=embed" target="_blank">More info</a>
+			<span class="input_style">Не готовы к рывку на новый уровень банковского обслуживания</span>
+			<a href="#" target="_blank">Попробуйте наши сервисы отдельно</a>
 		</div>
 
 		<div id="subscribers"></div>
@@ -497,21 +190,21 @@
 
 			<div id="register-logo">
 				<div class="logo-btm"><a href="#"><img src="img/footer-logo.png"></a></div>
-				<!-- <div class="register-btm"><a href="#" class="">Register a Free account</a></div> -->
+				<div class="register-btm"><a href="#" class="">Register a Free account</a></div>
 			</div>	
 
 		</div>
 
+-->
 		<div id="copyright">
 			
 			<div>
-				&copy; StampReady 2014 &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp; <a href="presskit/stampready-presskit1.0.html" target="_blank">Presskit</a> &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp; <a href="terms-and-conditions/index.html" target="_blank">Terms and Conditions</a> &nbsp;&nbsp;&nbsp;- &nbsp;&nbsp;&nbsp;<a href="mailto:info@stampready.net">info@stampready.net</a> &nbsp;&nbsp;&nbsp;&nbsp;<a class="twitter" href="http://www.twitter.com/stampready" target="_blank">twitter</a>
+				&copy; Mobiplas 2014 &nbsp;&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;<a href="mailto:info@mobiplas.ru">info@mobiplas.ru</a>
 			</div>
 
 		</div>
 
 	</div>
-
 
 	<!-- LOGIN AND REGISTER	 -->
 

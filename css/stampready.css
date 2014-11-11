@@ -7,6 +7,7 @@ Thanks so much
 ~ Kevin Groenendaal */
 
 /* Custom Font */
+/*
 @font-face{
 font-family:"ProximaNW01-AltThinReg";
 src:url("Fonts/9de06c9b-e01e-48d4-b864-599e6bf15774d41d.eot?#iefix");
@@ -27,31 +28,24 @@ font-family:"Proxima N W01 At Smbd";
 src:url("Fonts/a9f16204-0ff0-4a9e-8a02-59d15bc5f66bd41d.eot?#iefix");
 src:url("Fonts/a9f16204-0ff0-4a9e-8a02-59d15bc5f66bd41d.eot?#iefix") format("eot"),url("Fonts/6e328769-56a5-4de1-957e-575f839df36d.woff") format("woff"),url("Fonts/b5b3aa5a-a6be-4897-a646-09224334b90b.ttf") format("truetype"),url("Fonts/bcade2c9-7691-43e7-9c1b-e6b2ac50ee97.svg#bcade2c9-7691-43e7-9c1b-e6b2ac50ee97") format("svg");
 }
-
-/*Reset*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; }
-
 html { width: 100%; height: 100%; }
 body { font-family: 'Proxima N W01 At Reg', Helvetica, Arial, sans-serif; background-color: #FFF; font-size: 16px!important; }
-
 h1 { font-family: 'ProximaNW01-AltLightReg', Helvetica, Arial, sans-serif; font-size: 48px; color: #4a4a4a; }
 h2 { font-family: 'ProximaNW01-AltLightReg', Helvetica, Arial, sans-serif; font-size: 36px; line-height: 48px; color: #4a4a4a; }
 h3 { font-family: 'ProximaNW01-AltLightReg', Helvetica, Arial, sans-serif; font-size: 24px; line-height: 48px; color: #4a4a4a; }
-
+*/
 a { text-decoration: none; color: #4a4a4a; }
 
 .thinreg { font-family: 'ProximaNW01-AltThinReg', Helvetica, Arial, sans-serif; }
 .hidden { display: none; }
 
-
-
 #loginWrapper { position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0,0,0,0.4); z-index: 999999; display: none; }
-	
-	.login_popup { width: 350px; background-color: transparent!important; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); position: absolute; top: 50%; left: 50%; z-index: 99999; box-shadow: 0px 30px 30px rgba(0,0,0,0.12); margin-left: -175px; }
-	.login_content { background-color: #FFFFFF; padding: 0 25px; }
-	#loginWrapper p { font-size: 16px!important; line-height: 24px; font-family: 'Proxima N W01 At Reg', Helvetica, Arial, sans-serif; color: #9c9c9c; text-align: center; }
-	#loginWrapper input[type="submit"] { width: 350px; background-color: #69c0af; border: 0px; height: 78px; color: #FFF; text-transform: uppercase; font-family: 'Proxima N W01 At Smbd', Helvetica, Arial, sans-serif; cursor: pointer; font-size: 14px; line-height: 78px; -webkit-appearance: none; border-radius: 0; margin-left: -25px; bottom: 0px; }	
-	#loginWrapper input[type="submit"].de { background-color: #c5c5c5!important; }
+.login_popup { width: 350px; background-color: transparent!important; -webkit-transform: translateY(-50%); -ms-transform: translateY(-50%); transform: translateY(-50%); position: absolute; top: 50%; left: 50%; z-index: 99999; box-shadow: 0px 30px 30px rgba(0,0,0,0.12); margin-left: -175px; }
+.login_content { background-color: #FFFFFF; padding: 0 25px; }
+#loginWrapper p { font-size: 16px!important; line-height: 24px; font-family: 'Proxima N W01 At Reg', Helvetica, Arial, sans-serif; color: #9c9c9c; text-align: center; }
+#loginWrapper input[type="submit"] { width: 350px; background-color: #69c0af; border: 0px; height: 78px; color: #FFF; text-transform: uppercase; font-family: 'Proxima N W01 At Smbd', Helvetica, Arial, sans-serif; cursor: pointer; font-size: 14px; line-height: 78px; -webkit-appearance: none; border-radius: 0; margin-left: -25px; bottom: 0px; }	
+#loginWrapper input[type="submit"].de { background-color: #c5c5c5!important; }
 	.login_content_text { background-color: #FFFFFF; padding: 0 25px; height: 186px; padding-bottom: 100px; }
 	.login_content_text h1 { font-size: 24px!important; text-align: center; margin: -50px 0 11px 0; }
 	.login_content_nobtn { background-color: #FFFFFF; padding: 0 25px; height: 186px; padding-bottom: 64px; }

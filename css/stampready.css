@@ -98,8 +98,8 @@ a { text-decoration: none; color: #4a4a4a; }
 
 	.container { width: 1200px; position: absolute; top: 0; left: 50%; margin-left: -600px; height: 100px; z-index: 999; }
 
-	#headline { font-size: 36px; color: #FFF; font-family: 'ProximaNW01-AltLightReg', Helvetica, Arial, sans-serif; z-index: 100; margin: auto; width: 100%; height: 120px; position: absolute; top: 0; left: 0; bottom: 0; text-align: center; }
-	#headline span { font-family: 'Proxima N W01 At Smbd', Helvetica, Arial, sans-serif; }
+	#headline { font-size: 36px; color: #FFF; font-family: "Plumb Condensed"; z-index: 100; margin: auto; width: 100%; height: 120px; position: absolute; top: 0; left: 0; bottom: 0; text-align: center; }
+	#headline strong { font-family: "Plumb Condensed Bold"; }
 	#play { width: 64px; height: 64px; background-image: url(../img/play.png); z-index: 200; margin: auto; position: absolute; top: 120px; left: 0; bottom: 0; right: 0; cursor: pointer; opacity: 0.5; }
 	#play:hover { opacity: 1; }
 

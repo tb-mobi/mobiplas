@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 		}
 	})
-
+	/*
 	$(document).on('click', '#login_btn, #back_btn', function(){
 
 		scrollTop();
@@ -79,7 +79,7 @@ $(document).ready(function() {
 		e.stopPropagation();
 		
 	});
-	
+	*/
 	
 
 	$(document).keyup(function(e) {
@@ -318,7 +318,7 @@ $(document).ready(function() {
 			
 		}
 		
-		$('#define_amount_price').text('$'+price);
+		$('#define_amount_price').html("&#8381; "+price);
 		
 	});
 
@@ -633,7 +633,7 @@ function calcPrices(){
 		}
 
 
-		$('.plan_price_amount').text('$'+price_one);
+		$('.plan_price_amount').html("&#8381; "+price_one);
 		$('.define_amount_result').text(val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
 	
 		flag = 1;
